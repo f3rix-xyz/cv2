@@ -6,12 +6,14 @@ async function getData() {
     const host = process.env.VERCEL_URL || 'localhost:3000';
     console.log('host', host);
     const url = `${protocol}://${host}/api/posts`;
+    try {
+        const res = await fetch(url, { cache: 'no-store' });
+        return res.json();
 
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
+
+    } catch (error) {
+        console.error('Failed to fetch posts:', error);
     }
-    return res.json();
 }
 
 export const dynamic = 'force-dynamic'; // Use this if you want dynamic data fetching
