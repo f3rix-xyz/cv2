@@ -16,40 +16,40 @@ export default function HomeClient({ allPosts }: { allPosts: { posts: Post; user
     }, [allPosts, filterType]);
 
     return (
-        <main className="min-h-screen bg-yellow-200 p-4 md:p-8 font-mono relative">
+        <main className="bg-yellow-200 p-4 md:p-8 font-mono relative">
             {/* Checkered background */}
             <div className="absolute inset-0 bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(to_right,#00000010_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
-            <div className="max-w-6xl mx-auto relative">
+            <div className="mx-auto relative max-w-5xl">
                 <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-4xl font-bold text-black bg-red-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                    <h1 className="text-4xl font-bold text-black bg-red-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] inline-block">
                         Competitions Board
                     </h1>
-                    <Link href="/addEvent" className="bg-green-400 text-black px-6 py-3 font-bold text-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition">
+                    <Link href="/addEvent" className="bg-green-400 text-black px-6 py-3 font-bold text-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition inline-block">
                         Add Hackathon
                     </Link>
                 </div>
-                <div className="mb-8 flex space-x-4">
+                <div className="mb-8 flex justify-center space-x-4">
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'hackathon' ? 'bg-blue-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition w-32 ${filterType === 'hackathon' ? 'bg-blue-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('hackathon')}
                     >
                         Hackathons
                     </button>
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'case comp' ? 'bg-green-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition w-32 ${filterType === 'case comp' ? 'bg-green-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('case comp')}
                     >
-                        Case Competitions
+                        Case Comps
                     </button>
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'all' ? 'bg-gray-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition w-32 ${filterType === 'all' ? 'bg-gray-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('all')}
                     >
                         All
                     </button>
                 </div>
-                <div className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {filteredPosts.map((post) => (
                         <PostCard key={post.posts.id} post={post} />
                     ))}
@@ -67,10 +67,9 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
     };
 
     return (
-
-        <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6 m-4 md:m-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 md:p-6">
+        <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6 m-4 md:m-6 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row">
+                <div className="md:w-1/2 p-4 md:p-6 border-r-4 border-black">
                     <div className="bg-purple-400 p-4 border-4 border-black mb-4">
                         <h2 className="text-2xl font-bold text-black mb-2">{post.posts.competitionName}</h2>
                         <div className="flex justify-between items-center">
@@ -91,7 +90,7 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
                         View Competition Details
                     </Link>
                 </div>
-                <div className="p-4 md:p-6 bg-blue-200 border-l-4 border-black">
+                <div className="md:w-1/2 p-4 md:p-6 bg-blue-200">
                     {post.users && (
                         <>
                             <h3 className="font-bold text-black text-xl mb-4">{post.users.name}</h3>
@@ -128,6 +127,5 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
                 </div>
             </div>
         </div>
-
     );
 }
