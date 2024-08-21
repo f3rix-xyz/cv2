@@ -43,29 +43,29 @@ export default function Home() {
             <div className="absolute inset-0 bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(to_right,#00000010_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
             <div className="max-w-6xl mx-auto relative">
-                <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-4xl font-bold text-black bg-red-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <h1 className="text-3xl md:text-4xl font-bold text-black bg-red-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                         Competitions Board
                     </h1>
-                    <Link href="/addEvent" className="bg-green-400 text-black px-6 py-3 font-bold text-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition">
+                    <Link href="/addEvent" className="mt-4 md:mt-0 bg-green-400 text-black px-6 py-3 font-bold text-lg md:text-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition">
                         Add Hackathon
                     </Link>
                 </div>
-                <div className="mb-8 flex space-x-4">
+                <div className="mb-8 flex flex-wrap gap-4">
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'hackathon' ? 'bg-blue-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`flex-1 md:flex-initial px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'hackathon' ? 'bg-blue-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('hackathon')}
                     >
                         Hackathons
                     </button>
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'case comp' ? 'bg-green-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`flex-1 md:flex-initial px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'case comp' ? 'bg-green-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('case comp')}
                     >
                         Case Competitions
                     </button>
                     <button
-                        className={`px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'all' ? 'bg-gray-400 text-black' : 'bg-gray-200 text-gray-700'}`}
+                        className={`flex-1 md:flex-initial px-6 py-2 font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition ${filterType === 'all' ? 'bg-gray-400 text-black' : 'bg-gray-200 text-gray-700'}`}
                         onClick={() => setFilterType('all')}
                     >
                         All
@@ -74,7 +74,7 @@ export default function Home() {
 
                 {/* Loading State */}
                 {loading ? (
-                    <Loading></Loading>
+                    <Loading />
                 ) : (
                     <div className="space-y-8">
                         {filteredPosts.map((post) => (
@@ -86,6 +86,7 @@ export default function Home() {
         </main>
     );
 }
+
 
 function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -100,11 +101,13 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
                 <div className="p-4 md:p-6">
                     <div className="bg-purple-400 p-4 border-4 border-black mb-4">
                         <h2 className="text-2xl font-bold text-black mb-2">{post.posts.competitionName}</h2>
-                        <div className="flex justify-between items-center">
-                            <span className="inline-block bg-yellow-300 text-black px-2 py-1 text-sm font-semibold border-2 border-black">
+                        <div className="flex flex-col md:flex-row justify-between items-center">
+                            <span className="inline-block bg-yellow-300 text-black px-2 py-1 text-sm font-semibold border-2 border-black mb-2 md:mb-0 md:flex-1">
                                 {post.posts.type}
                             </span>
-                            <span className="text-sm font-bold">Starts: {post.posts.date}</span>
+                            <span className="text-sm font-bold md:ml-4 md:flex-1 text-center md:text-left">
+                                Starts: {post.posts.date}
+                            </span>
                         </div>
                     </div>
                     <div className="mb-4">

@@ -66,7 +66,7 @@ const AddPostPage: FC = () => {
                 });
 
                 if (postResponse.ok) {
-                    router.push('/allPosts'); // Redirect to home page after successful post
+                    router.push('/hackathons'); // Redirect to home page after successful post
                 } else {
                     console.error('Failed to create post');
                 }
@@ -78,13 +78,17 @@ const AddPostPage: FC = () => {
         }
     };
 
+    const handleBack = () => {
+        router.push('/hackathons'); // Go back to the previous page
+    };
+
     return (
         <div className="min-h-screen bg-yellow-200 p-4 md:p-8 font-mono relative overflow-hidden">
             {/* Checkered background */}
             <div className="absolute inset-0 bg-[linear-gradient(#00000010_1px,transparent_1px),linear-gradient(to_right,#00000010_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
             {/* Decorative shapes */}
-            <div className="hidden md:block absolute top-10 left-10 w-40 h-40 bg-blue-400 rounded-full border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] z-10 overflow-hidden">
+            <div className="hidden md:block absolute top-20 left-20 w-40 h-40 bg-blue-400 rounded-full border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] z-10 overflow-hidden">
                 <div className="w-full h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#000_10px,#000_12px)]"></div>
             </div>
             <div className="hidden md:block absolute bottom-20 right-10 w-60 h-60 bg-red-400 transform rotate-45 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] z-10 overflow-hidden">
@@ -92,7 +96,29 @@ const AddPostPage: FC = () => {
             </div>
             <div className="hidden md:block absolute top-1/2 left-1/4 w-20 h-20 bg-green-400 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-10"></div>
 
-            <div className="max-w-3xl mx-auto relative z-20">
+            {/* Back Button */}
+            <button
+                onClick={handleBack}
+                className="absolute top-4 left-4 p-2 bg-[#FF6F61] border-4 border-black rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-30"
+                style={{ zIndex: 100 }}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 19l-7-7 7-7"
+                    />
+                </svg>
+            </button>
+
+            <div className="max-w-3xl mx-auto relative z-20 mt-16">
                 <h1 className="text-4xl font-bold text-black mb-8 bg-purple-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                     Add a New Post
                 </h1>

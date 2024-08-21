@@ -28,13 +28,17 @@ const UpdateInfoPage: FC = () => {
             });
 
             if (response.ok) {
-                router.push('/allPosts');
+                router.push('/addEvent');
             } else {
                 console.error('Failed to update info');
             }
         } catch (error) {
             console.error('An error occurred while updating info:', error);
         }
+    };
+
+    const handleBack = () => {
+        router.push('/hackathons'); // Go back to the previous page
     };
 
     return (
@@ -51,7 +55,29 @@ const UpdateInfoPage: FC = () => {
             </div>
             <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-green-400 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-10"></div>
 
-            <div className="max-w-3xl mx-auto relative z-20">
+            {/* Back Arrow */}
+            <button
+                onClick={handleBack}
+                className="absolute top-4 left-4 p-2 bg-[#FF6F61] border-4 border-black rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out z-30"
+                style={{ zIndex: 100 }}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 19l-7-7 7-7"
+                    />
+                </svg>
+            </button>
+
+            <div className="max-w-3xl mx-auto relative z-20 mt-20 md:mt-32">
                 <h1 className="text-4xl font-bold text-black mb-8 bg-purple-400 p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                     Update Your Information
                 </h1>
@@ -67,7 +93,7 @@ const UpdateInfoPage: FC = () => {
                             type="text"
                             {...register('name', { required: 'Name is required' })}
                             placeholder="John Doe"
-                            className="w-full p-2 border-2 border-black font-mono text-black" // Ensure text is black
+                            className="w-full p-2 border-2 border-black font-mono text-black"
                         />
                         {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
                     </div>
@@ -79,7 +105,7 @@ const UpdateInfoPage: FC = () => {
                             type="url"
                             {...register('linkedin', { required: 'LinkedIn URL is required' })}
                             placeholder="https://linkedin.com/in/your-profile"
-                            className="w-full p-2 border-2 border-black font-mono text-black" // Ensure text is black
+                            className="w-full p-2 border-2 border-black font-mono text-black"
                         />
                         {errors.linkedin && <p className="text-red-500 mt-1">{errors.linkedin.message}</p>}
                     </div>
@@ -90,7 +116,7 @@ const UpdateInfoPage: FC = () => {
                             id="about"
                             {...register('about', { required: 'About field is required' })}
                             placeholder="Describe your core values, motivations, and reasons for participating."
-                            className="w-full p-2 border-2 border-black font-mono text-black" // Ensure text is black
+                            className="w-full p-2 border-2 border-black font-mono text-black"
                             rows={4}
                         />
                         {errors.about && <p className="text-red-500 mt-1">{errors.about.message}</p>}
@@ -103,7 +129,7 @@ const UpdateInfoPage: FC = () => {
                             type="text"
                             {...register('contact')}
                             placeholder="e.g., +1234567890"
-                            className="w-full p-2 border-2 border-black font-mono text-black" // Ensure text is black
+                            className="w-full p-2 border-2 border-black font-mono text-black"
                         />
                     </div>
 
@@ -114,7 +140,7 @@ const UpdateInfoPage: FC = () => {
                             type="url"
                             {...register('github')}
                             placeholder="https://github.com/your-profile"
-                            className="w-full p-2 border-2 border-black font-mono text-black" // Ensure text is black
+                            className="w-full p-2 border-2 border-black font-mono text-black"
                         />
                     </div>
 
@@ -131,7 +157,6 @@ const UpdateInfoPage: FC = () => {
                 </form>
             </div>
         </div>
-
     );
 };
 
