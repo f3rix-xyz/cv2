@@ -2,19 +2,28 @@
 import HomeClient from '@/componets/HomeClient';
 
 async function getData() {
-    const protocol = process.env.NODE_ENV === 'production' ? 'http' : 'http';
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
     const host = process.env.VERCEL_URL || 'localhost:3000';
-    console.log('host', host);
     const url = `${protocol}://${host}/api/posts`;
+    console.log('Fetching from URL:', url);
+
     try {
         const res = await fetch(url, { cache: 'no-store' });
-        return res.json();
 
+        // Log the response status
+        console.log('Response status:', res.status);
 
+        if (!res.ok) {
+            throw new Error(`Failed to fetch: ${res.statusText}`);
+        }
+
+        return await res.json();
     } catch (error) {
         console.error('Failed to fetch posts:', error);
+        return []; // Return an empty array or handle the error appropriately
     }
 }
+
 
 export const dynamic = 'force-dynamic'; // Use this if you want dynamic data fetching
 
