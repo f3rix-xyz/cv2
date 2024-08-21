@@ -2,7 +2,7 @@
 import HomeClient from '@/componets/HomeClient';
 
 async function getData() {
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const protocol = process.env.NODE_ENV === 'production' ? 'http' : 'http';
     const host = process.env.VERCEL_URL || 'localhost:3000';
     console.log('host', host);
     const url = `${protocol}://${host}/api/posts`;

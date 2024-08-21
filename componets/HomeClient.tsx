@@ -67,6 +67,7 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
     };
 
     return (
+
         <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6 m-4 md:m-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 md:p-6">
@@ -127,5 +128,6 @@ function PostCard({ post }: { post: { posts: Post; users: User | null } }) {
                 </div>
             </div>
         </div>
+
     );
 }
