@@ -53,7 +53,26 @@ export const posts = pgTable("posts", {
     competitionName: text("title").notNull(),
     competitionLink: text("link").notNull(),
     date: text("date").notNull(),
+
 })
+
+
 
 export type Post = typeof posts.$inferInsert;
 export type NewPost = typeof posts.$inferInsert;
+
+export const accepted_users = pgTable("accepted_users", {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    post_id: text("post_id").notNull().references(() => posts.id),
+    user_id: text("user_id").notNull().references(() => users.id),
+});
+
+export type AcceptedUser = typeof accepted_users.$inferInsert;
+export type NewAcceptedUser = typeof accepted_users.$inferInsert;
+
+export const message = pgTable("message", {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    post_id: text("post_id").notNull().references(() => posts.id),
+    user_id: text("user_id").notNull().references(() => users.id),
+    message: text("message").notNull(),
+});

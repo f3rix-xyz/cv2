@@ -30,7 +30,7 @@ export default async function Home() {
           </div>
           <div>
             <Link
-              href="/allPosts"
+              href="/hackathons"
               className="inline-block bg-neon-orange text-black text-xl font-bold py-3 px-8 rounded-lg border-4 border-black hover:bg-[#0ff] hover:text-black transition-colors mt-4 md:mt-0"
             >
               Find a Hackathon Partner
