@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 const LoginPage: FC = () => {
     const router = useRouter(); // Initialize useRouter
 
-    const handleSignIn = () => signIn('google', { callbackUrl: '/addEvent' });
+    const handleSignIn = () => signIn('google', { callbackUrl: '/hackathons' });
 
     const handleBack = () => {
         router.push('/hackathons'); // Navigate to 'allPosts' page

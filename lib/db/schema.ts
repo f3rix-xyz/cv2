@@ -72,7 +72,7 @@ export type NewAcceptedUser = typeof accepted_users.$inferInsert;
 
 export const message = pgTable("message", {
     id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-    post_id: text("post_id").notNull().references(() => posts.id),
-    user_id: text("user_id").notNull().references(() => users.id),
+    user_id_from: text("user_id_from").notNull().references(() => users.id),
+    user_id_to: text("user_id_to").notNull().references(() => users.id),
     message: text("message").notNull(),
 });
