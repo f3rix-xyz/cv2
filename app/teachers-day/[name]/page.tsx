@@ -21,7 +21,7 @@ const TeachersDayPage = () => {
                             To our esteemed mentor and guide,
                         </p>
                         <h2 className="text-3xl font-semibold text-center text-purple-600">
-                            {name ? `${name} Sir` : 'Our Teacher'}
+                            {name ? `${name}` : 'Our Teacher'}
                         </h2>
                         <p className="text-lg text-gray-600 text-center">
                             you gave me a chance in my first year when I made the blunder, and it really means a lot to me.
