@@ -1,7 +1,13 @@
+'use client';
+
 import React from 'react';
+import { useParams } from 'next/navigation';
 import { Sparkles } from 'lucide-react';
 
 const TeachersDayPage = () => {
+    // Use the useParams hook to get the dynamic segment (teacher's name)
+    const { name } = useParams();
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center p-4">
             <div className="w-full max-w-3xl bg-white rounded-lg shadow-xl">
@@ -15,10 +21,10 @@ const TeachersDayPage = () => {
                             To our esteemed mentor and guide,
                         </p>
                         <h2 className="text-3xl font-semibold text-center text-purple-600">
-                            Rajshekhar Sir
+                            {name ? `${name} Sir` : 'Our Teacher'}
                         </h2>
                         <p className="text-lg text-gray-600 text-center">
-                            you gave me a chance in my first year when I came to your office, and it really means a lot to me
+                            you gave me a chance in my first year when I made the blunder, and it really means a lot to me.
                         </p>
                         <div className="bg-blue-50 p-4 rounded-lg">
                             <p className="italic text-gray-700 text-center">
