@@ -21,7 +21,7 @@ export default function Error({
                 <div className="mb-6 text-center">
                     <p className="text-xl mb-2">404 - Page Not Found</p>
                     <p className="text-stone-600">
-                        The page you're looking for seems to have vanished into thin air!
+                        The page you&apos;re looking for seems to have vanished into thin air!
                     </p>
                 </div>
                 <div className="flex flex-col space-y-4">
