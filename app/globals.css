@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -31,6 +33,7 @@ body {
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 
   font-family: 'Rubik', sans-serif;
+  font-family: 'Courier Prime', monospace;
 }
 
 @layer utilities {
@@ -95,4 +98,51 @@ body {
   }
 
 
+}
+
+@layer components {
+  .prose {
+    @apply text-stone-800;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-stone-900;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold mt-6 mb-3 text-stone-900;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose a {
+    @apply text-blue-600 underline hover:text-blue-800;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply pl-6 mb-4;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose blockquote {
+    @apply pl-4 border-l-4 border-stone-300 italic my-4;
+  }
+
+  .prose img {
+    @apply max-w-full h-auto my-4;
+  }
+
+  .prose pre {
+    @apply bg-stone-100 p-4 rounded-md overflow-x-auto my-4;
+  }
+
+  .prose code {
+    @apply bg-stone-100 px-1 py-0.5 rounded;
+  }
 }
